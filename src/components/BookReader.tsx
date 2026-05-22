@@ -37,6 +37,7 @@ export default function BookReader({ pdfUrl, title }: Props) {
 
   return (
     <div className="reader-wrap">
+      <p className="reader-title">{title}</p>
       <Document
         file={pdfUrl}
         onLoadSuccess={onLoadSuccess}
