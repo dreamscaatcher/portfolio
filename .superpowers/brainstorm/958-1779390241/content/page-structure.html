@@ -1,0 +1,68 @@
+<h2>Page & Component Structure</h2>
+<p class="subtitle">How the Astro project is organized, and what the new Books section looks like.</p>
+
+<div class="section">
+  <h3>Project Layout</h3>
+  <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.25rem 1.75rem;font-family:monospace;font-size:0.82rem;line-height:1.9;margin-top:0.75rem;">
+    <span style="color:#fb923c;">portfolio/</span><br>
+    &nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#60a5fa;">src/</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#60a5fa;">pages/</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">└─</span> <span style="color:#e2e8f0;">index.astro</span> <span style="color:#475569;">← single page, all sections</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#60a5fa;">components/</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#e2e8f0;">Nav.astro</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#e2e8f0;">Hero.astro</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#e2e8f0;">About.astro</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#e2e8f0;">Skills.astro</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#38bdf8;">Books.astro</span> <span style="color:#475569;">← new section</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#38bdf8;">BookReader.tsx</span> <span style="color:#475569;">← React island (react-pdf)</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#e2e8f0;">Contact.astro</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">└─</span> <span style="color:#e2e8f0;">ThemeToggle.tsx</span> <span style="color:#475569;">← React island (client-side)</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#60a5fa;">lib/</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">└─</span> <span style="color:#e2e8f0;">sanity.ts</span> <span style="color:#475569;">← Sanity client + GROQ queries</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">└─</span> <span style="color:#60a5fa;">styles/</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">└─</span> <span style="color:#e2e8f0;">global.css</span> <span style="color:#475569;">← migrated CSS variables + resets</span><br>
+    &nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#60a5fa;">sanity/</span> <span style="color:#475569;">← Sanity Studio (separate workspace)</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#64748b;">└─</span> <span style="color:#e2e8f0;">schemas/book.ts</span><br>
+    &nbsp;&nbsp;<span style="color:#64748b;">├─</span> <span style="color:#e2e8f0;">astro.config.mjs</span><br>
+    &nbsp;&nbsp;<span style="color:#64748b;">└─</span> <span style="color:#e2e8f0;">package.json</span>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Books Section — Mockup</h3>
+  <p class="subtitle" style="margin-bottom:1rem;">How it appears on the portfolio page</p>
+
+  <div class="mockup">
+    <div class="mockup-header">Books Section — Live Preview Concept</div>
+    <div class="mockup-body" style="padding:2rem;background:#020c1b;font-family:'Inter',sans-serif;">
+
+      <div style="text-align:center;margin-bottom:2rem;">
+        <span style="font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#2563eb;">What I've Written</span><br>
+        <span style="font-family:'Georgia',serif;font-size:1.8rem;font-weight:800;color:#e0f2fe;letter-spacing:-0.02em;">My <em style="font-style:normal;background:linear-gradient(90deg,#2563eb,#0ea5e9,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Book</em></span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start;max-width:700px;margin:0 auto;background:#0d2137;border:1px solid rgba(56,189,248,0.15);border-radius:18px;padding:1.5rem;">
+        <div style="background:linear-gradient(135deg,#1d4ed8,#0ea5e9);border-radius:10px;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:2.5rem;">📗</div>
+        <div>
+          <div style="font-size:1.1rem;font-weight:700;color:#e0f2fe;margin-bottom:0.3rem;">Book Title</div>
+          <div style="font-size:0.82rem;color:#38bdf8;margin-bottom:0.75rem;">Author · Year</div>
+          <div style="font-size:0.85rem;color:#93c5fd;line-height:1.7;margin-bottom:1.25rem;">A short description of the book fetched from Sanity CMS. Update it anytime from the Sanity dashboard without touching code.</div>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <button style="background:linear-gradient(135deg,#1d4ed8,#0ea5e9);color:#fff;border:none;border-radius:50px;padding:0.6rem 1.4rem;font-size:0.85rem;font-weight:600;cursor:pointer;">📖 Read Online</button>
+            <button style="background:#0d2137;color:#e0f2fe;border:1px solid rgba(56,189,248,0.25);border-radius:50px;padding:0.6rem 1.4rem;font-size:0.85rem;font-weight:600;cursor:pointer;">⬇ Download PDF</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="max-width:700px;margin:1.5rem auto 0;background:#061526;border:1px solid rgba(56,189,248,0.1);border-radius:14px;padding:1rem;text-align:center;">
+        <div style="color:#4a7c9e;font-size:0.78rem;margin-bottom:0.5rem;">INLINE PDF READER (react-pdf)</div>
+        <div style="background:#0d2137;border-radius:8px;height:280px;display:flex;align-items:center;justify-content:center;color:#93c5fd;font-size:0.9rem;">
+          📄 PDF renders here — page navigation, zoom controls
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:1.5rem;">Does this structure and book section layout look good? Reply in the terminal to continue to data flow & deployment details.</p>

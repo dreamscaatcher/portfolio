@@ -1,0 +1,70 @@
+<h2>Tech Stack Options</h2>
+<p class="subtitle">Three approaches for your portfolio — all targeting Cloudflare Pages with a headless CMS and inline book reader.</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Astro + Sanity CMS <span style="font-size:0.75rem;background:rgba(37,99,235,0.15);color:#60a5fa;padding:2px 8px;border-radius:20px;margin-left:6px;">Recommended</span></h3>
+      <p><strong>Best fit for a portfolio.</strong> Astro generates ultra-fast static HTML by default and has first-class Cloudflare Pages support. You can drop in React components (like a PDF viewer) as "islands" — so your React/Next.js knowledge still applies. Sanity gives you a polished CMS dashboard to swap the book file anytime.</p>
+      <div class="pros-cons" style="margin-top:0.75rem;">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Fastest possible output — pure HTML where JS isn't needed</li>
+          <li>Cloudflare Pages adapter is rock-solid</li>
+          <li>React islands = familiar component model</li>
+          <li>Sanity free tier is generous</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>New framework to learn (though easy to pick up)</li>
+          <li>Less ecosystem than Next.js</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Next.js (static export) + Sanity CMS</h3>
+      <p><strong>Familiar territory.</strong> You already use Next.js in your Neo4j project. A static export (next export) runs perfectly on Cloudflare Pages with no server needed. Sanity handles the book. The trade-off is that static export disables Next.js server features (API routes, SSR) — fine for a portfolio.</p>
+      <div class="pros-cons" style="margin-top:0.75rem;">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>You already know Next.js + React + TypeScript</li>
+          <li>Huge ecosystem, tons of examples</li>
+          <li>Works well on Cloudflare Pages via static export</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Static export loses API routes & SSR</li>
+          <li>Heavier JS bundle than Astro for a mostly-static site</li>
+          <li>More boilerplate for a simple portfolio</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Next.js + Cloudflare Workers adapter + Sanity CMS</h3>
+      <p><strong>Full SSR on Cloudflare.</strong> Using <code>@cloudflare/next-on-pages</code> you get server-side rendering at the edge — API routes work, dynamic content works. But the adapter has limitations (not all Next.js features are supported) and adds real setup complexity.</p>
+      <div class="pros-cons" style="margin-top:0.75rem;">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Full Next.js capabilities including API routes</li>
+          <li>Edge SSR — fast globally</li>
+          <li>Future-proof for dynamic features</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Complex setup — adapter has known gotchas</li>
+          <li>Not all Next.js features supported on Cloudflare Workers</li>
+          <li>Overkill for a portfolio + book reader</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top:1.5rem;">
+  <p class="subtitle">All three options use <strong>Sanity CMS</strong> (free tier) for book management and <strong>react-pdf / PDF.js</strong> for the inline reader. Click your preferred option above, or tell me in the terminal.</p>
+</div>
