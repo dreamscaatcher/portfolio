@@ -5,4 +5,10 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [react()],
   output: 'static',
+  vite: {
+    ssr: {
+      noExternal: [],
+      external: ['pdfjs-dist'],
+    },
+  },
 });
