@@ -5,6 +5,7 @@ import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Skills from '../components/Skills.astro';
 import Books from '../components/Books.astro';
+import Contact from '../components/Contact.astro';
 ---
 
 <!DOCTYPE html>
@@ -23,9 +24,39 @@ import Books from '../components/Books.astro';
 </head>
 <body>
   <Nav />
-  <Hero />
-  <About />
-  <Skills />
-  <Books />
+  <main>
+    <Hero />
+    <About />
+    <Skills />
+    <Books />
+    <Contact />
+  </main>
+  <footer>
+    <p>Designed &amp; built by <span class="footer-name">Gurinder Singh Ghuman</span> · Berlin, Germany</p>
+    <p>Data &amp; Automation · Operations Analytics · Full-Stack Tooling</p>
+  </footer>
 </body>
 </html>
+
+<style>
+  footer {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .footer-name {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+
+  footer p {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+</style>

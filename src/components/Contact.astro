@@ -1,0 +1,187 @@
+---
+// src/components/Contact.astro
+---
+
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Let's Connect</span>
+      <h2 class="section-title">Get In <em>Touch</em></h2>
+    </div>
+
+    <div class="contact-inner">
+      <div class="contact-links">
+        <a href="mailto:gurinder.singh.ghuman22@gmail.com" class="contact-link reveal">
+          <div class="cl-icon">✉️</div>
+          <div class="cl-label">Email</div>
+          <div class="cl-value">gurinder.singh.<br>ghuman22@gmail.com</div>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link reveal reveal-d1">
+          <div class="cl-icon">💼</div>
+          <div class="cl-label">LinkedIn</div>
+          <div class="cl-value">Connect on LinkedIn</div>
+        </a>
+        <a href="https://github.com/dreamscaatcher" target="_blank" rel="noopener" class="contact-link reveal reveal-d2">
+          <div class="cl-icon">🐙</div>
+          <div class="cl-label">GitHub</div>
+          <div class="cl-value">View My Projects</div>
+        </a>
+      </div>
+
+      <form
+        class="contact-form reveal reveal-d3"
+        id="contactForm"
+      >
+        <input type="hidden" name="access_key" value="11e35af7-3b72-46f4-a030-6406491fc3dc" />
+        <input type="hidden" name="subject" value="New message from portfolio" />
+        <input type="checkbox" name="botcheck" style="display:none;" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-input" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input type="text" name="subject_line" class="form-input" placeholder="What's this about?" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea name="message" class="form-input" placeholder="Tell me about your project or opportunity…" required></textarea>
+        </div>
+
+        <div id="formMsg" class="form-msg" aria-live="polite"></div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  #contact { background: var(--bg-secondary); }
+  .contact-inner { max-width: 720px; margin: 0 auto; }
+
+  .contact-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-link {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.4rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .contact-link:hover {
+    transform: translateY(-5px);
+    border-color: var(--blue-primary);
+    box-shadow: 0 14px 35px var(--shadow);
+  }
+
+  .cl-icon { font-size: 1.7rem; margin-bottom: 0.6rem; }
+  .cl-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  .cl-value { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); word-break: break-word; }
+
+  .contact-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2.25rem;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.2rem; }
+
+  .form-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.45rem;
+    letter-spacing: 0.02em;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.72rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 0.93rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .form-input::placeholder { color: var(--text-muted); }
+  .form-input:focus { border-color: var(--blue-primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  textarea.form-input { resize: vertical; min-height: 120px; }
+
+  .btn-block { width: 100%; justify-content: center; }
+
+  .form-msg {
+    margin-bottom: 0.75rem;
+    font-size: 0.88rem;
+    min-height: 1.2em;
+  }
+
+  .form-msg.success { color: #22c55e; }
+  .form-msg.error   { color: #f87171; }
+
+  @media (max-width: 768px) {
+    .contact-links { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+  const formMsg = document.getElementById('formMsg') as HTMLDivElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    formMsg.className = 'form-msg';
+    formMsg.textContent = '';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        formMsg.className = 'form-msg success';
+        formMsg.textContent = '✓ Message sent! I\'ll get back to you soon.';
+        form.reset();
+      } else {
+        throw new Error(data.message ?? 'Unknown error');
+      }
+    } catch (err) {
+      formMsg.className = 'form-msg error';
+      formMsg.textContent = '✗ Something went wrong. Please email me directly.';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
+    }
+  });
+</script>
