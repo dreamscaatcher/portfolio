@@ -1,0 +1,169 @@
+/* src/styles/global.css */
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── CSS VARIABLES ── */
+:root {
+  --blue-primary:   #2563eb;
+  --blue-light:     #38bdf8;
+  --blue-cyan:      #06b6d4;
+  --blue-deep:      #1d4ed8;
+  --blue-sky:       #0ea5e9;
+  --gradient:       linear-gradient(135deg, #1d4ed8 0%, #0ea5e9 55%, #22d3ee 100%);
+  --gradient-text:  linear-gradient(90deg, #2563eb, #0ea5e9, #22d3ee);
+}
+
+/* ── DARK THEME ── */
+[data-theme="dark"] {
+  --bg-primary:    #020c1b;
+  --bg-secondary:  #061526;
+  --bg-card:       #0d2137;
+  --bg-card-hover: #112b47;
+  --text-primary:  #e0f2fe;
+  --text-secondary:#93c5fd;
+  --text-muted:    #4a7c9e;
+  --border:        rgba(56, 189, 248, 0.15);
+  --nav-bg:        rgba(2, 12, 27, 0.85);
+  --shadow:        rgba(0, 0, 0, 0.45);
+  --orb-opacity:   0.45;
+}
+
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg-primary:    #f0f9ff;
+  --bg-secondary:  #e0f2fe;
+  --bg-card:       #ffffff;
+  --bg-card-hover: #dbeafe;
+  --text-primary:  #0c1a2e;
+  --text-secondary:#1e40af;
+  --text-muted:    #64748b;
+  --border:        rgba(37, 99, 235, 0.15);
+  --nav-bg:        rgba(240, 249, 255, 0.85);
+  --shadow:        rgba(37, 99, 235, 0.12);
+  --orb-opacity:   0.18;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.35s, color 0.35s;
+}
+
+/* ── CUSTOM SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--blue-primary); border-radius: 3px; }
+
+/* ── SHARED LAYOUT ── */
+section { padding: 5.5rem 1.5rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+
+/* ── SECTION HEADERS ── */
+.section-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-primary);
+  margin-bottom: 0.6rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.section-title em {
+  font-style: normal;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.78rem 1.75rem;
+  border-radius: 50px;
+  font-size: 0.93rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s, color 0.25s;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 4px 22px rgba(37, 99, 235, 0.28);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(37, 99, 235, 0.42);
+}
+
+.btn-ghost {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  transform: translateY(-3px);
+  border-color: var(--blue-primary);
+  color: var(--blue-primary);
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+
+/* ── CHIP ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+}
+
+.chip.accent {
+  border-color: rgba(37, 99, 235, 0.4);
+  color: var(--blue-primary);
+  background: rgba(37, 99, 235, 0.08);
+}
