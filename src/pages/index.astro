@@ -1,6 +1,6 @@
 ---
-// src/pages/index.astro
 import '../styles/global.css';
+import Nav from '../components/Nav.astro';
 ---
 
 <!DOCTYPE html>
@@ -14,6 +14,9 @@ import '../styles/global.css';
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <p style="color:white;padding:2rem;">Astro is working ✓</p>
+  <Nav />
+  <main style="padding-top:68px;color:var(--text-primary);">
+    <p style="padding:4rem 2rem;">Sections coming soon…</p>
+  </main>
 </body>
 </html>

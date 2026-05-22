@@ -1,0 +1,258 @@
+---
+// src/components/Nav.astro
+import ThemeToggle from './ThemeToggle.tsx';
+---
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">GSG.</a>
+
+    <ul class="nav-links">
+      <li><a href="#hero"    data-nav="hero">Home</a></li>
+      <li><a href="#about"   data-nav="about">About</a></li>
+      <li><a href="#skills"  data-nav="skills">Skills</a></li>
+      <li><a href="#books"   data-nav="books">Books</a></li>
+      <li><a href="#contact" data-nav="contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <ThemeToggle client:load />
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <a href="#hero"    onclick="closeMenu()">Home</a>
+  <a href="#about"   onclick="closeMenu()">About</a>
+  <a href="#skills"  onclick="closeMenu()">Skills</a>
+  <a href="#books"   onclick="closeMenu()">Books</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    height: 68px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.35s, border-color 0.35s;
+  }
+
+  .nav-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 800;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.2s;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; left: 0;
+    width: 0; height: 2px;
+    background: var(--gradient);
+    border-radius: 1px;
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--blue-primary); }
+  .nav-links a:hover::after,
+  .nav-links a.active::after { width: 100%; }
+
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  :global(.theme-toggle) {
+    position: relative;
+    width: 58px; height: 30px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+
+  :global(.theme-toggle:hover) { border-color: var(--blue-primary); }
+
+  :global(.toggle-thumb) {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--gradient);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  :global([data-theme="light"] .toggle-thumb) { transform: translateX(28px); }
+
+  :global(.toggle-icons) {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px;
+    font-size: 11px;
+    pointer-events: none;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px; height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 1.5rem 1.5rem;
+    flex-direction: column;
+    gap: 0;
+    z-index: 999;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .mobile-nav.open {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .mobile-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, padding-left 0.2s;
+  }
+
+  .mobile-nav a:last-child { border-bottom: none; }
+  .mobile-nav a:hover { color: var(--blue-primary); padding-left: 0.5rem; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger')!;
+  const mobileNav = document.getElementById('mobileNav')!;
+
+  function openMenu() {
+    hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileNav.classList.add('open');
+    mobileNav.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileNav.classList.remove('open');
+    mobileNav.setAttribute('aria-hidden', 'true');
+  }
+
+  (window as any).closeMenu = closeMenu;
+
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileNav.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!mobileNav.contains(e.target as Node) && !hamburger.contains(e.target as Node)) closeMenu();
+  });
+
+  // Active nav link on scroll
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-links a[data-nav]');
+  const sectionIds = ['hero', 'about', 'skills', 'books', 'contact'];
+
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.dataset.nav === id);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) navObs.observe(el);
+  });
+</script>
