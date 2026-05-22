@@ -1,0 +1,353 @@
+---
+// src/components/Hero.astro
+---
+
+<section id="hero">
+  <div class="hero-orbs">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+    <div class="orb orb-d"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="dot"></span>
+        Available for opportunities
+      </div>
+
+      <h1 class="hero-name">Gurinder Singh<br>Ghuman</h1>
+
+      <p class="hero-role">Data &amp; Automation &nbsp;·&nbsp; Operations Analytics &nbsp;·&nbsp; Full-Stack Tooling</p>
+
+      <div class="hero-location">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+        </svg>
+        Berlin, Germany
+      </div>
+
+      <p class="hero-desc">
+        Data and automation professional with an MSc in Data Analytics &amp; Marketing. Translating operational complexity into measurable KPIs, repeatable reports, and lightweight automation — with the strategic mindset of a commissioned Military Officer.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Get in Touch
+        </a>
+        <a href="#about" class="btn btn-ghost">
+          Explore My Work
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="avatar-card">
+      <div class="avatar-ring">
+        <img src="/Gemini_Generated_Image_2ffus92ffus92ffu.png" alt="Gurinder Singh Ghuman" />
+      </div>
+      <div class="avatar-name">Gurinder Singh Ghuman</div>
+      <div class="avatar-role">Data &amp; Automation Professional</div>
+
+      <div class="avatar-chips">
+        <span class="chip accent">🎖️ Army Officer</span>
+        <span class="chip accent">📊 Data Analyst</span>
+        <span class="chip">🇩🇪 Berlin-based</span>
+        <span class="chip">🎓 MSc Data Analytics</span>
+      </div>
+
+      <div class="quick-stats">
+        <div class="qs-item">
+          <div class="qs-num">5+</div>
+          <div class="qs-label">Years Exp.</div>
+        </div>
+        <div class="qs-item">
+          <div class="qs-num">MSc</div>
+          <div class="qs-label">Data Analytics</div>
+        </div>
+        <div class="qs-item">
+          <div class="qs-num">3+</div>
+          <div class="qs-label">Languages</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Scroll</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<style>
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 1.5rem 4rem;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1100px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-orbs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: var(--orb-opacity);
+    animation: drift 10s ease-in-out infinite;
+  }
+
+  .orb-a { width: 480px; height: 480px; background: radial-gradient(circle, #1d4ed8 0%, transparent 65%); top: -8%;  right: -6%; animation-delay: 0s; }
+  .orb-b { width: 360px; height: 360px; background: radial-gradient(circle, #0ea5e9 0%, transparent 65%); bottom: 5%; left: -6%; animation-delay: -4s; }
+  .orb-c { width: 280px; height: 280px; background: radial-gradient(circle, #06b6d4 0%, transparent 65%); top: 38%;  left: 28%; animation-delay: -8s; }
+  .orb-d { width: 200px; height: 200px; background: radial-gradient(circle, #38bdf8 0%, transparent 65%); bottom: 20%; right: 15%; animation-delay: -2s; }
+
+  @keyframes drift {
+    0%,100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(18px, -22px) scale(1.06); }
+    66%      { transform: translate(-12px, 14px) scale(0.94); }
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .hero-content { text-align: left; }
+  .hero-content .hero-cta { justify-content: flex-start; }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 0.38rem 1.1rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--blue-primary);
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-tag .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--blue-primary);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 7.5vw, 5.2rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-role {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-location {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-desc {
+    font-size: 1.02rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.85;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: bob 2.2s ease-in-out infinite;
+  }
+
+  .scroll-cue svg { width: 18px; height: 18px; }
+
+  @keyframes bob {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(9px); }
+  }
+
+  .avatar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .avatar-ring {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(29,78,216,0.25), rgba(14,165,233,0.25));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .avatar-ring img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+  }
+
+  .avatar-ring::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: var(--gradient);
+    z-index: -1;
+  }
+
+  .avatar-ring::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    z-index: -1;
+  }
+
+  .avatar-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--text-primary);
+  }
+
+  .avatar-role {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: -1rem;
+  }
+
+  .avatar-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .quick-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .qs-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .qs-item:hover { border-color: var(--blue-primary); transform: translateY(-3px); }
+
+  .qs-num {
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .qs-label {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-content { text-align: center; }
+    .hero-content .hero-cta { justify-content: center; }
+    .hero-location { justify-content: center; }
+    .avatar-card { max-width: 340px; margin: 0 auto; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-cta { flex-direction: column; align-items: center; }
+    .quick-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
