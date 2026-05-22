@@ -166,7 +166,8 @@ import ThemeToggle from './ThemeToggle.tsx';
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   .mobile-nav {
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 68px; left: 0; right: 0;
     background: var(--nav-bg);
@@ -174,18 +175,20 @@ import ThemeToggle from './ThemeToggle.tsx';
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 1.25rem 1.5rem 1.5rem;
-    flex-direction: column;
     gap: 0;
     z-index: 999;
     transform: translateY(-10px);
     opacity: 0;
-    transition: transform 0.3s, opacity 0.3s;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
   }
 
   .mobile-nav.open {
-    display: flex;
     transform: translateY(0);
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .mobile-nav a {
